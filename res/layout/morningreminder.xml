@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFF"
+    android:fillViewport="true" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/titles" >
+
+                <TextView
+                    android:id="@+id/textMorningReminder_Title"
+                    style="@style/titles_text_inb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:paddingLeft="5dp"
+                    android:text="@string/textAssignmentAdd_Title" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textMorningReminder_Motivation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textMorningReminder_Motivation"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/textMorningReminder_Assignments"
+                style="@style/blue_button_text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#2B65EC"
+                android:text="@string/textMorningReminder_Assignments"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <LinearLayout
+                android:id="@+id/listMorningReminder_Assignments"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/textMorningReminder_Events"
+                style="@style/blue_button_text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#2B65EC"
+                android:text="@string/textMorningReminder_Events"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <LinearLayout
+                android:id="@+id/listMorningReminder_Events"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/textMorningReminder_Reminders"
+                style="@style/blue_button_text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#2B65EC"
+                android:text="@string/textMorningReminder_Reminders"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <LinearLayout
+                android:id="@+id/listMorningReminder_Reminders"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <Button
+                android:id="@+id/buttonMorningReminder_ToSchedule"
+                style="@style/blue_button_text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/blue_button_layoutlg"
+                android:text="@string/buttonMorningReminders_ToSchedule" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

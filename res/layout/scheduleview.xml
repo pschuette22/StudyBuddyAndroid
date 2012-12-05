@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#999"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:background="@drawable/titles"
+            android:paddingBottom="10dp" >
+
+            <TextView
+                style="@style/titles_text_inb"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/textViewScheduleView_Title" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="#FFF"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFF" >
+
+            <Button
+                android:id="@+id/buttonSchedule_ToSettings"
+                style="@style/blue_button_text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="50"
+                android:background="@drawable/blue_button_layoutlg"
+                android:padding="5dp"
+                android:text="@string/buttonUniversal_ToSettings" />
+
+            <Button
+                android:id="@+id/buttonScheduleView_ToAssignmentsView"
+                style="@style/blue_button_text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="50"
+                android:background="@drawable/blue_button_layoutlg"
+                android:padding="5dp"
+                android:text="@string/buttonUniversal_ToAssignments" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp" >
+
+            <Button
+                android:id="@+id/buttonScheduleView_ToScheduleEdit"
+                style="@style/blue_button_textsm"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="30"
+                android:background="@drawable/blue_button_layoutlg"
+                android:padding="3dp"
+                android:text="@string/buttonScheduleView_ToScheduleEdit" />
+
+            <Button
+                android:id="@+id/buttonSchedule_DeleteClasses"
+                style="@style/blue_button_textsm"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="30"
+                android:background="@drawable/blue_button_layoutlg"
+                android:padding="3dp"
+                android:text="@string/buttonScheduleView_DeleteSelect" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:background="#FFF" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#2B65EC"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/textViewScheduleView_Monday"
+                        style="@style/blue_button_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="5dp"
+                        android:text="@string/textScheduleEdit_Monday"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/textViewSchedule_MondaySchedule"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:background="#FFF" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#2B65EC"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/textViewScheduleView_Tuesday"
+                        style="@style/blue_button_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="5dp"
+                        android:text="@string/textScheduleView_Tuesday"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/textViewSchedule_TuesdaySchedule"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#000"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:background="#FFF" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#2B65EC"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/textViewScheduleView_Wednesday"
+                        style="@style/blue_button_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="5dp"
+                        android:text="@string/textScheduleView_Wednesday"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/textViewSchedule_WednesdaySchedule"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#000"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:background="#FFF" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#2B65EC"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/textViewScheduleView_Thursday"
+                        style="@style/blue_button_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="5dp"
+                        android:text="@string/textScheduleView_Thursday"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/textViewSchedule_ThursdaySchedule"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#000"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:background="#FFF" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#2B65EC"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/textViewScheduleEdit_Friday"
+                        style="@style/blue_button_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="5dp"
+                        android:text="@string/textScheduleView_Friday"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/textViewSchedule_FridaySchedule"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#000"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:background="#FFF" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#2B65EC"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/textViewScheduleView_Saturday"
+                        style="@style/blue_button_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="5dp"
+                        android:text="@string/textScheduleView_Saturday"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/textViewSchedule_SaturdaySchedule"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#000"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:background="#FFF" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#2B65EC"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/textViewScheduleView_Sunday"
+                        style="@style/blue_button_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="5dp"
+                        android:text="@string/textScheduleView_Sunday"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/textViewSchedule_SundaySchedule"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#000"
+                android:orientation="vertical" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

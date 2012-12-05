@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parentSettings"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#999"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#999" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/titles"
+                android:paddingBottom="10dp" >
+
+                <TextView
+                    android:id="@+id/Assignments_Title"
+                    style="@style/titles_text_inb"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/textSettings_Title" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="#FFF"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/buttonSettings_ToAssignments"
+                    style="@style/blue_button_text"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="50"
+                    android:background="@drawable/blue_button_layoutlg"
+                    android:padding="5dp"
+                    android:text="@string/buttonUniversal_ToAssignments" />
+
+                <Button
+                    android:id="@+id/buttonSettings_ToSchedule"
+                    style="@style/blue_button_text"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="50"
+                    android:background="@drawable/blue_button_layoutlg"
+                    android:padding="5dp"
+                    android:text="@string/buttonUniversal_ToSchedule" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp" >
+
+                <Button
+                    android:id="@+id/launchTutorial"
+                    style="@style/blue_button_textsm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="50"
+                    android:background="@drawable/blue_button_layoutlg"
+                    android:padding="3dp"
+                    android:text="Tutorial" />
+
+                <Button
+                    android:id="@+id/setHolidays"
+                    style="@style/blue_button_textsm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="50"
+                    android:background="@drawable/blue_button_layoutlg"
+                    android:padding="3dp"
+                    android:text="Set Holidays" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:background="#FFF" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#2B65EC"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/blue_button_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text="@string/textSettings_ClearTitle"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonSettings_ClearAll"
+                style="@style/blue_button_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/blue_button_layoutlg"
+                android:text="@string/buttonSettings_ClearAll" />
+
+            <Button
+                android:id="@+id/buttonSettings_ClearPlanner"
+                style="@style/blue_button_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/blue_button_layoutlg"
+                android:text="@string/buttonSettings_ClearPlanner" />
+
+            <Button
+                android:id="@+id/buttonSettings_ClearSchedule"
+                style="@style/blue_button_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/blue_button_layoutlg"
+                android:text="@string/buttonSettings_ClearSchedule" />
+
+            <Button
+                android:id="@+id/buttonSettings_DeleteIndividual"
+                style="@style/blue_button_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/blue_button_layoutlg"
+                android:text="@string/buttonSettings_DeleteSelectClasses" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="6dp"
+                android:background="#FFF" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#2B65EC"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/blue_button_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text="@string/textSettings_NotificationTitle"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/checkBox_NotificationsOn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="@string/checkBoxSettings_Notifications"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/textView_NotificationsOnDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/textViewSettings_NotificationOn"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#595454" />
+
+            <CheckBox
+                android:id="@+id/checkBox_PlannerAssistantOn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="@string/checkBoxSettings_PlannerAssistant"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/textView_PlanAssistOnDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textSettings_PlannerAssistant"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#595454" />
+
+            <CheckBox
+                android:id="@+id/checkBox_NotificationsMorningOn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="@string/checkBoxSettings_Morning"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/textView_MorningOnDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textSettings_Morning"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#595454" />
+
+            <CheckBox
+                android:id="@+id/checkBox_NightlyOn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="@string/checkBoxSettings_Nightly"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/textView_NightlyOnDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/textSettings_Nightly"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#595454" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

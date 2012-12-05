@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="#999" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:background="@drawable/titles" >
+
+            <TextView
+                style="@style/titles_text_inb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="5dp"
+                android:text="@string/textScheduleEdit_AddClass" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="#FFF"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/buttonScheduleEdit_Return"
+                style="@style/blue_button_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/blue_button_layoutlg"
+                android:text="@string/buttonScheduleEdit_SaveQuit" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/editTextScheduleEdit_ClassName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text"
+                    android:hint="@string/editTextScheduleEdit_ClassName"
+                    android:maxLines="3"
+                    android:layout_gravity="center_vertical"
+                    android:maxWidth="150dp"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp" >
+
+                    <requestFocus />
+                </EditText>
+
+                <CheckBox
+                    android:id="@+id/checkBoxEditSchedule_SameTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:text="@string/allSame"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/textScheduleEdit_OnDays"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="30"
+                    android:text="@string/textScheduleEdit_OnDays"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#000" />
+
+                <TextView
+                    android:id="@+id/textScheduleEdit_Starts"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="30"
+                    android:text="@string/textScheduleEdit_Starts"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#000" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="30"
+                    android:text="@string/textScheduleEdit_Ends"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/checkBoxScheduleEdit_Mon"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="30"
+                    android:text="@string/checkBoxScheduleEdit_Mon"
+                    android:textColor="#000" />
+
+                <Button
+                    android:id="@+id/buttonScheduleEdit_MonStart"
+                    style="@style/blue_button_textsm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="30"
+                    android:background="@drawable/blue_button_layoutsm"
+                    android:fadeScrollbars="false" />
+
+                <Button
+                    android:id="@+id/buttonScheduleEdit_MonEnds"
+                    style="@style/blue_button_textsm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="30"
+                    android:background="@drawable/blue_button_layoutsm" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/checkBoxScheduleEdit_Tues"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="30"
+                    android:text="@string/checkBoxScheduleEdit_Tues"
+                    android:textColor="#000" />
+
+                <Button
+                    android:id="@+id/buttonScheduleEdit_TuesStart"
+                    style="@style/blue_button_textsm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="30"
+                    android:background="@drawable/blue_button_layoutsm" />
+
+                <Button
+                    android:id="@+id/buttonScheduleEdit_TuesEnds"
+                    style="@style/blue_button_textsm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="30"
+                    android:background="@drawable/blue_button_layoutsm" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/checkBoxScheduleEdit_Wed"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="30"
+                    android:text="@string/checkBoxScheduleEdit_Weds"
+                    android:textColor="#000" />
+
+                <Button
+                    android:id="@+id/buttonScheduleEdit_WedsStart"
+                    style="@style/blue_button_textsm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="30"
+                    android:background="@drawable/blue_button_layoutsm" />
+
+                <Button
+                    android:id="@+id/buttonScheduleEdit_WedsEnds"
+                    style="@style/blue_button_textsm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="30"
+                    android:background="@drawable/blue_button_layoutsm" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/checkBoxScheduleEdit_Thur"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="30"
+                    android:text="@string/checkBoxScheduleEdit_Thur"
+                    android:textColor="#000" />
+
+                <Button
+                    android:id="@+id/buttonScheduleEdit_ThurStart"
+                    style="@style/blue_button_textsm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="30"
+                    android:background="@drawable/blue_button_layoutsm" />
+
+                <Button
+                    android:id="@+id/buttonScheduleEdit_ThurEnds"
+                    style="@style/blue_button_textsm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="30"
+                    android:background="@drawable/blue_button_layoutsm" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/checkBoxScheduleEdit_Fri"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="30"
+                    android:text="@string/checkBoxScheduleEdit_Fri"
+                    android:textColor="#000" />
+
+                <Button
+                    android:id="@+id/buttonScheduleEdit_FriStart"
+                    style="@style/blue_button_textsm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="30"
+                    android:background="@drawable/blue_button_layoutsm" />
+
+                <Button
+                    android:id="@+id/buttonScheduleEdit_FriEnds"
+                    style="@style/blue_button_textsm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="30"
+                    android:background="@drawable/blue_button_layoutsm" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/checkBoxScheduleEdit_Sat"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="30"
+                    android:text="@string/checkBoxScheduleEdit_Sat"
+                    android:textColor="#000" />
+
+                <Button
+                    android:id="@+id/buttonScheduleEdit_SatStart"
+                    style="@style/blue_button_textsm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="30"
+                    android:background="@drawable/blue_button_layoutsm" />
+
+                <Button
+                    android:id="@+id/buttonScheduleEdit_SatEnds"
+                    style="@style/blue_button_textsm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="30"
+                    android:background="@drawable/blue_button_layoutsm" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/checkBoxScheduleEdit_Sun"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="30"
+                    android:text="@string/checkBoxScheduleEdit_Sun"
+                    android:textColor="#000" />
+
+                <Button
+                    android:id="@+id/buttonScheduleEdit_SunStart"
+                    style="@style/blue_button_textsm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="30"
+                    android:background="@drawable/blue_button_layoutsm" />
+
+                <Button
+                    android:id="@+id/buttonScheduleEdit_SunEnds"
+                    style="@style/blue_button_textsm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="30"
+                    android:background="@drawable/blue_button_layoutsm" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonScheduleEdit_AddClass"
+                style="@style/blue_button_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/blue_button_layoutlg"
+                android:text="@string/buttonScheduleEdit_AddClass" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
