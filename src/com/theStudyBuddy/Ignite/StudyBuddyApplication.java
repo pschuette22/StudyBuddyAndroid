@@ -182,7 +182,8 @@ public class StudyBuddyApplication extends Application
       {
         if (year > tYear)
           break;
-        else if (year == tYear && tMonth > month)
+        else if
+        (year == tYear && tMonth > month)
           break;
       }
 
