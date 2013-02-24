@@ -1,15 +1,5 @@
 package com.theStudyBuddy.Ignite.Settings;
 
-import com.theStudyBuddy.Ignite.R;
-import com.theStudyBuddy.Ignite.StudyBuddyActivity;
-import com.theStudyBuddy.Ignite.StudyBuddyApplication;
-import com.theStudyBuddy.Ignite.Classes.ClassDeleteActivity;
-import com.theStudyBuddy.Ignite.Classes.ClassObject;
-import com.theStudyBuddy.Ignite.Classes.ClassSpinnerData;
-import com.theStudyBuddy.Ignite.Classes.ScheduleData;
-import com.theStudyBuddy.Ignite.Classes.ScheduleViewActivity;
-import com.theStudyBuddy.Ignite.Entries.AssignmentViewActivity;
-import com.theStudyBuddy.Ignite.Entries.PlannerData;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -18,7 +8,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,8 +15,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+import com.theStudyBuddy.Ignite.R;
+import com.theStudyBuddy.Ignite.StudyBuddyApplication;
+import com.theStudyBuddy.Ignite.Classes.ClassObject;
+import com.theStudyBuddy.Ignite.Classes.ClassSpinnerData;
+import com.theStudyBuddy.Ignite.Classes.ScheduleData;
+import com.theStudyBuddy.Ignite.Entries.PlannerData;
 
-public class SettingsViewActivity extends Fragment implements OnClickListener
+
+public class SettingsViewFragment extends Fragment implements OnClickListener
 {
 
   ScheduleData scheduleData;
@@ -50,9 +46,7 @@ public class SettingsViewActivity extends Fragment implements OnClickListener
   CheckBox Nightly;
   Context context;
   Activity activity;
-  
-//  String adUnitId = "a14f89f84e10faa";
-  
+    
   View mView;
 
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,17 +56,9 @@ public class SettingsViewActivity extends Fragment implements OnClickListener
     activity = this.getActivity();
     context = activity.getBaseContext();
     
-    StudyBuddyActivity.currentFragment = "Settings";
-
     StudyBuddy = (StudyBuddyApplication) activity.getApplication();
 
     mView = inflater.inflate(R.layout.settingsview, container, false);
-    
-    settingsToAssignments = (Button) mView.findViewById(R.id.buttonSettings_ToAssignments);
-    settingsToAssignments.setOnClickListener(this);
-
-    settingsToSchedule = (Button) mView.findViewById(R.id.buttonSettings_ToSchedule);
-    settingsToSchedule.setOnClickListener(this);
     
     LaunchTutorial = (Button) mView.findViewById(R.id.launchTutorial);
     LaunchTutorial.setOnClickListener(this);
@@ -178,21 +164,6 @@ public class SettingsViewActivity extends Fragment implements OnClickListener
 
     switch (v.getId())
     {
-    case R.id.buttonSettings_ToAssignments:
-      FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-      ft.setCustomAnimations(R.anim.in_from_left, R.anim.out_to_right);
-      Fragment newFrag = new AssignmentViewActivity();
-      ft.replace(R.id.fragmentContainerUnique, newFrag).commit();
-
-      break;
-
-    case R.id.buttonSettings_ToSchedule:
-      FragmentTransaction ft2 = getActivity().getSupportFragmentManager().beginTransaction();
-      ft2.setCustomAnimations(R.anim.out_to_left, R.anim.in_from_right);
-      Fragment newFrag2 = new ScheduleViewActivity();
-      ft2.replace(R.id.fragmentContainerUnique, newFrag2).commit();
-
-      break;
 
     case R.id.launchTutorial:
       launchTutorial();
@@ -299,13 +270,6 @@ public class SettingsViewActivity extends Fragment implements OnClickListener
       ConfirmCS.setTitle("Clear Schedule Confirmation");
       ConfirmCS.show();
 
-      break;
-
-    case R.id.buttonSettings_DeleteIndividual:
-      Intent toCD = new Intent(context, ClassDeleteActivity.class);
-      startActivityForResult(toCD, 500);
-      getActivity().overridePendingTransition(R.anim.in_from_bottom,
-          R.anim.hold);
       break;
 
     case R.id.setHolidays:

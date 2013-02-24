@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/addclass_subsectionbgrnd"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:layout_marginBottom="8dp" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/addClassTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="10"
+                android:background="@drawable/edit_text"
+                android:hint="@string/ClassName"
+                android:maxLines="4"
+                android:padding="2dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="5dp" />
+
+            <Button
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/white_delete"/>
+        </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/addMeeting"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/whitebutton_bgrnd"
+                android:orientation="horizontal"
+                android:padding="10dp" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/add" />
+
+                <TextView
+                    android:layout_marginLeft="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/AddClassText"
+                    android:textColor="#ACADAD"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/addMeetingsLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:animateLayoutChanges="true"
+            android:paddingLeft="20dp" />
+
+        <Button
+            android:id="@+id/buttonClass_Add"
+            style="@style/blue_button_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/blue_button_layoutlg"
+            android:gravity="left"
+            android:paddingBottom="3dp"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp"
+            android:paddingTop="3dp"
+            android:text="@string/AddThis" />
+    </LinearLayout>
+
+</LinearLayout>

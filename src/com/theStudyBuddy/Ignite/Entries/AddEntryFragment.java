@@ -3,15 +3,16 @@ package com.theStudyBuddy.Ignite.Entries;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.Intent;
-import android.database.Cursor;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -20,13 +21,16 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.theStudyBuddy.Ignite.R;
-import com.theStudyBuddy.Ignite.StudyBuddyActivity;
 import com.theStudyBuddy.Ignite.StudyBuddyApplication;
 
-public class AssignmentAddActivity extends Activity implements OnClickListener
-
+public class AddEntryFragment extends Fragment
 {
-
+  
+  String className;
+  FragmentActivity activity;
+  Context context;
+  View mView;
+  
   String AdayId;
   String AdayIdYear;
   String AdayIdMonth;
@@ -44,8 +48,6 @@ public class AssignmentAddActivity extends Activity implements OnClickListener
   String RdayIdMonth;
   String RdayIdDay;
   int RdayIdNum;
-
-  Cursor classcursor;
 
   Button assignmentReturn;
   protected Spinner classSpinnerA;
@@ -96,73 +98,62 @@ public class AssignmentAddActivity extends Activity implements OnClickListener
   int RYEARID;
 
   StudyBuddyApplication StudyBuddy;
-
-  @Override
-  public void onBackPressed()
+  
+  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+      Bundle bundle)
   {
-    super.onBackPressed();
-    Intent toPlanner = new Intent(getBaseContext(), StudyBuddyActivity.class);
-    startActivityForResult(toPlanner, 500);
-    overridePendingTransition(0, R.anim.out_to_bottom);
-  }
-
-  @Override
-  public void onCreate(Bundle savedInstanceState)
-  {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.assignmentadd);
-    StudyBuddy = (StudyBuddyApplication) getApplication();
+    super.onCreateView(inflater, container, bundle);
+    activity = getActivity();
+    context = activity.getApplicationContext();
     
-    String className = getIntent().getExtras().getString("ClassName");
+    mView = inflater.inflate(R.layout.assignmentadd, container, false);
+    
+    StudyBuddy = (StudyBuddyApplication) getActivity().getApplication();
 
-    assignmentReturn = (Button) findViewById(R.id.buttonAssignmentAdd_AddQuit);
-    assignmentReturn.setOnClickListener(this);
+    AssignmentAdd = (Button) mView.findViewById(R.id.buttonAssignmentAdd_AddAssignment);
 
-    AssignmentAdd = (Button) findViewById(R.id.buttonAssignmentAdd_AddAssignment);
-    AssignmentAdd.setOnClickListener(this);
+    AssignmentText = (EditText) mView.findViewById(R.id.editTextAssignmentAdd_Assignment);
 
-    AssignmentText = (EditText) findViewById(R.id.editTextAssignmentAdd_Assignment);
+    EventAdd = (Button) mView.findViewById(R.id.buttonAssignmentAdd_SaveEvent);
 
-    EventAdd = (Button) findViewById(R.id.buttonAssignmentAdd_SaveEvent);
-    EventAdd.setOnClickListener(this);
+    EventText = (EditText) mView.findViewById(R.id.editTextAssignmentAdd_EventTitle);
 
-    EventText = (EditText) findViewById(R.id.editTextAssignmentAdd_EventTitle);
+    ReminderAdd = (Button) mView.findViewById(R.id.buttonAssignmentAdd_SaveReminder);
 
-    ReminderAdd = (Button) findViewById(R.id.buttonAssignmentAdd_SaveReminder);
-    ReminderAdd.setOnClickListener(this);
-
-    ReminderText = (EditText) findViewById(R.id.editTextAssignmentAdd_Reminder);
+    ReminderText = (EditText) mView.findViewById(R.id.editTextAssignmentAdd_Reminder);
 
     // // for class pick spinner
-    classSpinnerA = (Spinner) findViewById(R.id.spinnerAssignmentAdd_ClassA);
-    classSpinnerE = (Spinner) findViewById(R.id.spinnerAssignmentAdd_ClassE);
-    classSpinnerR = (Spinner) findViewById(R.id.spinnerAssignmentAdd_ClassR);
+    classSpinnerA = (Spinner) mView.findViewById(R.id.spinnerAssignmentAdd_ClassA);
+    classSpinnerE = (Spinner) mView.findViewById(R.id.spinnerAssignmentAdd_ClassE);
+    classSpinnerR = (Spinner) mView.findViewById(R.id.spinnerAssignmentAdd_ClassR);
 
     // fix adapter, make a custom one maybe?
 
-
+    
     ArrayList<String> classTitles = StudyBuddy.spinnerArray(false);
     final ArrayAdapter<String> scheduleCursorAdapter = new ArrayAdapter<String>(
-        getBaseContext(), android.R.layout.simple_spinner_item, classTitles);
+        context, android.R.layout.simple_spinner_item, classTitles);
     
     classSpinnerA.setAdapter(scheduleCursorAdapter);
     scheduleCursorAdapter
         .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    classSpinnerA.setSelection(scheduleCursorAdapter.getPosition(className));
     
     classSpinnerE.setAdapter(scheduleCursorAdapter);
     scheduleCursorAdapter
         .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    classSpinnerE.setSelection(scheduleCursorAdapter.getPosition(className));
 
-    
     classSpinnerR.setAdapter(scheduleCursorAdapter);
     scheduleCursorAdapter
         .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    classSpinnerR.setSelection(scheduleCursorAdapter.getPosition(className));
+    
+    if(className != null){
+      classSpinnerE.setSelection(scheduleCursorAdapter.getPosition(className));
+      classSpinnerA.setSelection(scheduleCursorAdapter.getPosition(className));
+      classSpinnerR.setSelection(scheduleCursorAdapter.getPosition(className));
+    }
 
     // ///////////////////// Assignment Field
-    datePickAssignment = (Button) findViewById(R.id.button1AssignmentAdd_AssignmentDate);
+    datePickAssignment = (Button) mView.findViewById(R.id.button1AssignmentAdd_AssignmentDate);
     datePickAssignment.setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View v)
@@ -180,7 +171,7 @@ public class AssignmentAddActivity extends Activity implements OnClickListener
 
     // //////////////// Event
 
-    datePickEvent = (Button) findViewById(R.id.buttonAssignmentAdd_EventDate);
+    datePickEvent = (Button) mView.findViewById(R.id.buttonAssignmentAdd_EventDate);
     datePickEvent.setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View v)
@@ -196,7 +187,7 @@ public class AssignmentAddActivity extends Activity implements OnClickListener
     updateDisplayE();
 
     // ///////////////// Reminder
-    datePickReminder = (Button) findViewById(R.id.buttonAssignmentAdd_RemindDate);
+    datePickReminder = (Button) mView.findViewById(R.id.buttonAssignmentAdd_RemindDate);
     datePickReminder.setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View v)
@@ -212,8 +203,13 @@ public class AssignmentAddActivity extends Activity implements OnClickListener
 
     updateDisplayR();
 
+    
+    return mView;
   }
 
+
+  
+  
   private void updateDisplayR()
   {
 
@@ -328,19 +324,18 @@ public class AssignmentAddActivity extends Activity implements OnClickListener
     }
   };
 
-  @Override
-  protected Dialog onCreateDialog(int id)
+  protected Dialog showDialog(int id)
   {
     switch (id)
     {
     case DATE_DIALOG_IDA:
-      return new DatePickerDialog(this, ADateSetListener, AYear, AMonth, ADay);
+      return new DatePickerDialog(context, ADateSetListener, AYear, AMonth, ADay);
 
     case DATE_DIALOG_IDR:
-      return new DatePickerDialog(this, RDateSetListener, RYear, RMonth, RDay);
+      return new DatePickerDialog(context, RDateSetListener, RYear, RMonth, RDay);
 
     case DATE_DIALOG_IDE:
-      return new DatePickerDialog(this, EDateSetListener, EYear, EMonth, EDay);
+      return new DatePickerDialog(context, EDateSetListener, EYear, EMonth, EDay);
 
     }
     return null;
@@ -350,10 +345,6 @@ public class AssignmentAddActivity extends Activity implements OnClickListener
   {
     switch (v.getId())
     {
-
-    case R.id.buttonAssignmentAdd_AddQuit:
-      onBackPressed();
-      break;
 
     case R.id.buttonAssignmentAdd_AddAssignment:
       if (EntryAssignmentAdd())
@@ -365,7 +356,7 @@ public class AssignmentAddActivity extends Activity implements OnClickListener
         ADay = A.get(Calendar.DAY_OF_MONTH);
         updateDisplayA();
 
-        Toast.makeText(this,
+        Toast.makeText(context,
             getString(R.string.toastAssignmentAdd_AssignmentAdd),
             Toast.LENGTH_SHORT).show();
 
@@ -383,7 +374,7 @@ public class AssignmentAddActivity extends Activity implements OnClickListener
         EDay = A.get(Calendar.DAY_OF_MONTH);
         updateDisplayE();
 
-        Toast.makeText(this, getString(R.string.toastAssignmentAdd_EventAdd),
+        Toast.makeText(context, getString(R.string.toastAssignmentAdd_EventAdd),
             Toast.LENGTH_SHORT).show();
 
       }
@@ -400,7 +391,7 @@ public class AssignmentAddActivity extends Activity implements OnClickListener
         RDay = A.get(Calendar.DAY_OF_MONTH);
         updateDisplayR();
 
-        Toast.makeText(this,
+        Toast.makeText(context,
             getString(R.string.toastAssignmentAdd_ReminderAdd),
             Toast.LENGTH_SHORT).show();
       }
@@ -417,7 +408,7 @@ public class AssignmentAddActivity extends Activity implements OnClickListener
 
     if (AEntryText.length() < 2)
     {
-      AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+      AlertDialog.Builder dialog = new AlertDialog.Builder(context);
       dialog.setTitle(R.string.toastAssignmentAdd_FailEntryTitle);
       dialog.setMessage(R.string.toastAssignmentAdd_FailEntryBody);
       dialog.show();
@@ -449,7 +440,7 @@ public class AssignmentAddActivity extends Activity implements OnClickListener
     if ((EEntryText.length() < 2) || (EEntryClass == null))
     {
 
-      AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+      AlertDialog.Builder dialog = new AlertDialog.Builder(context);
       dialog.setTitle(R.string.toastAssignmentAdd_FailEntryTitle);
       dialog.setMessage(R.string.toastAssignmentAdd_FailEntryBody);
       dialog.show();
@@ -484,7 +475,7 @@ public class AssignmentAddActivity extends Activity implements OnClickListener
     // /////----------create resource strings-------
     //
     //
-    // AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+    // AlertDialog.Builder dialog = new AlertDialog.Builder(context);
     // dialog.setTitle(noClassesTitle);
     // dialog.setMessage(noClassesBody);
     // dialog.show();
@@ -495,7 +486,7 @@ public class AssignmentAddActivity extends Activity implements OnClickListener
     if ((REntryText.length() < 2) || (REntryClass == null))
     {
 
-      AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+      AlertDialog.Builder dialog = new AlertDialog.Builder(context);
       dialog.setTitle(R.string.toastAssignmentAdd_FailEntryTitle);
       dialog.setMessage(R.string.toastAssignmentAdd_FailEntryBody);
       dialog.show();
@@ -517,5 +508,6 @@ public class AssignmentAddActivity extends Activity implements OnClickListener
       return true;
     }
   }
+  
 
 }

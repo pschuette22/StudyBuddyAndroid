@@ -2,13 +2,6 @@ package com.theStudyBuddy.Ignite.Notifications;
 
 import java.util.ArrayList;
 
-import com.theStudyBuddy.Ignite.R;
-import com.theStudyBuddy.Ignite.StudyBuddyApplication;
-import com.theStudyBuddy.Ignite.Entries.AssignmentViewActivity;
-import com.theStudyBuddy.Ignite.Entries.EntryObject;
-import com.theStudyBuddy.Ignite.Entries.PlannerData;
-import com.theStudyBuddy.Ignite.R.id;
-
 import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +9,15 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.theStudyBuddy.Ignite.R;
+import com.theStudyBuddy.Ignite.StudyBuddyApplication;
+import com.theStudyBuddy.Ignite.Entries.AssignmentViewFragment;
+import com.theStudyBuddy.Ignite.Entries.EntryObject;
+import com.theStudyBuddy.Ignite.Entries.PlannerData;
+
 public class ReminderAdapter extends ArrayAdapter<EntryObject>
 {
-  AssignmentViewActivity AssignmentView;
+  AssignmentViewFragment AssignmentView;
   MorningReminderActivity MorningReminder;
   TextView Class;
   TextView Body;

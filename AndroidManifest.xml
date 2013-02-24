@@ -25,7 +25,7 @@
         <activity
             android:name="com.google.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
-        <activity android:name=".Entries.AssignmentAddActivity" >
+        <activity android:name=".Entries.EditPlannerActivity" >
         </activity>
         <activity android:name=".Classes.EditScheduleActivity" >
         </activity>
@@ -60,9 +60,9 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".Classes.ClassDeleteActivity" >
+        <activity android:name=".Classes.ClassDeleteFragment" >
         </activity>
-        <activity android:name=".Entries.PlannerDeleteActivity" >
+        <activity android:name=".Entries.DeleteEntryFragment" >
         </activity>
     </application>
 

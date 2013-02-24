@@ -8,7 +8,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,25 +24,21 @@ import com.google.ads.AdRequest;
 import com.google.ads.AdRequest.ErrorCode;
 import com.google.ads.AdSize;
 import com.google.ads.AdView;
-import com.theStudyBuddy.Ignite.Classes.ClassSpinnerData;
 import com.theStudyBuddy.Ignite.Classes.EditScheduleActivity;
-import com.theStudyBuddy.Ignite.Classes.ScheduleData;
-import com.theStudyBuddy.Ignite.Classes.ScheduleViewActivity;
-import com.theStudyBuddy.Ignite.Entries.AssignmentViewActivity;
-import com.theStudyBuddy.Ignite.Settings.SettingsData;
-import com.theStudyBuddy.Ignite.Settings.SettingsViewActivity;
+import com.theStudyBuddy.Ignite.Classes.ScheduleViewFragment;
+import com.theStudyBuddy.Ignite.Entries.AssignmentViewFragment;
 
 public class StudyBuddyActivity extends FragmentActivity
 {
 
-  SettingsData settingsData;
-  ScheduleData scheduleData;
-  ClassSpinnerData classData;
-  public static String currentFragment;
   final String adUnitId = "a14f89f84e10faa";
 
   StudyBuddyApplication StudyBuddy;
-  ScheduleViewActivity ScheduleView;
+  ScheduleViewFragment ScheduleView;
+  ViewPager mViewPager;
+  MyFragmentPagerAdapter pagerAdapter;
+  int setPage = 1;
+  
 
   public static final String TAG = "TAG";
 
@@ -51,29 +48,7 @@ public class StudyBuddyActivity extends FragmentActivity
   public void onBackPressed()
   {
     
-    if (currentFragment.contentEquals("Settings"))
-    {
-      FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-      ft.setCustomAnimations(R.anim.in_from_left, R.anim.out_to_right);
-      Fragment newFrag = new AssignmentViewActivity();
-      ft.replace(R.id.fragmentContainerUnique, newFrag).commit();
-      return;
-    }
-    if (currentFragment.contentEquals("Schedule"))
-    {
-      FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-      ft.setCustomAnimations(R.anim.out_to_left, R.anim.in_from_right);
-      Fragment newFrag = new AssignmentViewActivity();
-      ft.replace(R.id.fragmentContainerUnique, newFrag).commit();
-      return;
-    }
-    else
-    {
-      // close out
-      moveTaskToBack(true);
-
       super.onBackPressed();
-    }
 
   }
 
@@ -88,56 +63,26 @@ public class StudyBuddyActivity extends FragmentActivity
   {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main);
-    Log.d("TAG", "Creating");
-      
-    LinearLayout mainLinLayout = (LinearLayout) findViewById(R.id.fragmentContainerUnique);
-    mainLinLayout.removeAllViews();
     
-    if(savedInstanceState == null){
-      Bundle extras = getIntent().getExtras();
-      if (extras != null)
-      {
-        if (extras.getString(Intent.EXTRA_TEXT).contentEquals("Schedule"))
-        {
-          FragmentManager fragmentManager = this.getSupportFragmentManager();
-          FragmentTransaction fragmentTransaction = fragmentManager
-              .beginTransaction();
-          Fragment AVfragment = new ScheduleViewActivity();
-          fragmentTransaction.add(R.id.fragmentContainerUnique, AVfragment);
-          fragmentTransaction.commit();
-        }
-        else if (extras.getString(Intent.EXTRA_TEXT).contentEquals("Settings"))
-        {
-          FragmentManager fragmentManager = this.getSupportFragmentManager();
-          FragmentTransaction fragmentTransaction = fragmentManager
-              .beginTransaction();
-          Fragment SVfragment = new SettingsViewActivity();
-          fragmentTransaction.add(R.id.fragmentContainerUnique, SVfragment);
-          fragmentTransaction.commit();
-        }
-        else
-        {
-          FragmentManager fragmentManager = this.getSupportFragmentManager();
-          FragmentTransaction fragmentTransaction = fragmentManager
-              .beginTransaction();
-          Fragment AVfragment = new AssignmentViewActivity();
-          fragmentTransaction.add(R.id.fragmentContainerUnique, AVfragment);
-          fragmentTransaction.commit();
-        }
-      }
-      else
-      {
-        FragmentManager fragmentManager = this.getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager
-            .beginTransaction();
-        Fragment AVfragment = new AssignmentViewActivity();
-        fragmentTransaction.add(R.id.fragmentContainerUnique, AVfragment);
-        fragmentTransaction.commit();
-      }
+    StudyBuddy = (StudyBuddyApplication) getApplication();
+
+    mViewPager = (ViewPager) findViewById(R.id.mainActivityViewPager);
+    
+    pagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
+    mViewPager.setAdapter(pagerAdapter);
+    
+    Bundle extras = getIntent().getExtras();
+    if(extras != null){
+     setPage = extras.getInt("FragNumber");
+     mViewPager.setCurrentItem(setPage); 
+    }
+    
+
+    if(StudyBuddy.launchTutorial){
+      tutorial();
     }
 
-    tutorial();
-    LaunchAds(this);
+    //    LaunchAds(this);
 
   }
 
@@ -146,11 +91,6 @@ public class StudyBuddyActivity extends FragmentActivity
     StudyBuddyApplication StudyBuddy = (StudyBuddyApplication) getApplication();
     if (StudyBuddy.getAllClasses().size() <= 1)
     {
-      SettingsData settingsData = new SettingsData(this);
-
-      if (settingsData.firstTime())
-      {
-        settingsData.updateSetting("First Load", 1);
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(this)
             .setPositiveButton("Launch Tutorial",
@@ -180,7 +120,6 @@ public class StudyBuddyActivity extends FragmentActivity
             .setMessage("Thanks for checking out the College Study Buddy. It's pretty sweet, I hope you find it useful. Would you like to watch the tutorial or get started?");
         dialog.show();
 
-      }
     }
   }
 
@@ -263,6 +202,36 @@ public class StudyBuddyActivity extends FragmentActivity
 
   }
   
-  
+  private class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 
+    public CharSequence getPageTitle(int position)
+    {
+      if(position == 0) return "Planner";
+      else return "Schedule";
+    }
+
+    public MyFragmentPagerAdapter(FragmentManager fm)
+    {
+      super(fm);
+
+    }
+
+    public Fragment getItem(int arg0)
+    {
+      if(arg0 == 0){
+        return new AssignmentViewFragment();
+      }
+      else if(arg0 == 1){
+        return new ScheduleViewFragment();
+      }
+      return null;
+    }
+
+    public int getCount()
+    {
+      return 2;
+    }
+  
+  }
+  
 }

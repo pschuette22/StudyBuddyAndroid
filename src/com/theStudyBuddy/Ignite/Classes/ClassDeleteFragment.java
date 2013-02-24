@@ -2,56 +2,54 @@ package com.theStudyBuddy.Ignite.Classes;
 
 import java.util.ArrayList;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 
 import com.theStudyBuddy.Ignite.R;
-import com.theStudyBuddy.Ignite.StudyBuddyActivity;
 import com.theStudyBuddy.Ignite.StudyBuddyApplication;
 
-public class ClassDeleteActivity extends Activity implements OnClickListener
+public class ClassDeleteFragment extends Fragment implements OnClickListener
 {
-  @Override
-  public void onBackPressed()
-  {
-    super.onBackPressed();
-    Intent intent = new Intent(getBaseContext(), StudyBuddyActivity.class);
-    intent.putExtra(android.content.Intent.EXTRA_TEXT, "Schedule");
-    startActivityForResult(intent, 500);
-    overridePendingTransition(0, R.anim.out_to_bottom);
-  }
 
   ArrayList<String> deleteItems = new ArrayList<String>();
   StudyBuddyApplication StudyBuddy;
+  FragmentActivity activity;
+  Context context;
+  View mView;
 
   LinearLayout DeleteList;
   ArrayList<ClassObject> deleteList;
-
-  @Override
-  public void onCreate(Bundle savedInstanceState)
+  
+  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+      Bundle savedInstanceState)
   {
-    super.onCreate(savedInstanceState);
+    super.onCreateView(inflater, container, savedInstanceState);
+    activity = getActivity();
+    context = activity.getBaseContext();
+    mView = inflater.inflate(R.layout.deleteclasslist, container, false);
 
-    setContentView(R.layout.deleteclasslist);
-    StudyBuddy = (StudyBuddyApplication) getApplication();
+    StudyBuddy = (StudyBuddyApplication) activity.getApplication();
 
-    DeleteList = (LinearLayout) findViewById(R.id.classDeleteList);
-    Button Delete = (Button) findViewById(R.id.buttonClassDelete_Delete);
+    DeleteList = (LinearLayout) mView.findViewById(R.id.classDeleteList);
+    Button Delete = (Button) mView.findViewById(R.id.buttonClassDelete_Delete);
     Delete.setOnClickListener(this);
 
-    Button Cancel = (Button) findViewById(R.id.buttonClassDelete_Cancel);
+    Button Cancel = (Button) mView.findViewById(R.id.buttonClassDelete_Cancel);
     Cancel.setOnClickListener(this);
 
     deleteList = StudyBuddy.getAllClasses();
     if (deleteList.size() > 0)
     {
-      ClassDeleteAdapter deleteAdapter = new ClassDeleteAdapter(this,
+      ClassDeleteAdapter deleteAdapter = new ClassDeleteAdapter(activity,
           R.layout.deleteclassadapterblk, deleteList);
       for (int i = 0; i < deleteList.size(); i++)
       {
@@ -59,9 +57,10 @@ public class ClassDeleteActivity extends Activity implements OnClickListener
         DeleteList.addView(item);
       }
     }
-
-  }
-
+    
+    return mView;
+  } 
+  
   public void onClick(View v)
   {
 
@@ -73,7 +72,7 @@ public class ClassDeleteActivity extends Activity implements OnClickListener
       break;
 
     case R.id.buttonClassDelete_Cancel:
-      onBackPressed();
+      activity.onBackPressed();
       break;
 
     }
@@ -84,7 +83,7 @@ public class ClassDeleteActivity extends Activity implements OnClickListener
     
     if (deleteList.size() == 0)
     {
-      onBackPressed();
+      activity.onBackPressed();
     }
     
     for(int i = 0; i < DeleteList.getChildCount(); i++){
@@ -113,7 +112,7 @@ public class ClassDeleteActivity extends Activity implements OnClickListener
       }
       
     }
-    onBackPressed();
+    activity.onBackPressed();
   }
 
 }

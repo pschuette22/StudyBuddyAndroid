@@ -32,13 +32,13 @@ public class PlannerAdapter extends ArrayAdapter<EntryObject>
   TextView Type;
 
   Activity activity;
-  AssignmentViewActivity AssignmentView;
+  AssignmentViewFragment AssignmentView;
   StudyBuddyApplication StudyBuddy;
   Context context;
   ArrayList<EntryObject> entries;
 
   public PlannerAdapter(Activity mActivity, int layout,
-      ArrayList<EntryObject> _entries, AssignmentViewActivity AVA)
+      ArrayList<EntryObject> _entries, AssignmentViewFragment AVA)
   {
     super(mActivity, layout, _entries);
     activity = mActivity;

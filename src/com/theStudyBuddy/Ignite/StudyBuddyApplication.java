@@ -5,6 +5,16 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 
+import android.app.AlarmManager;
+import android.app.Application;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.os.AsyncTask;
+import android.util.Log;
+
 import com.theStudyBuddy.Ignite.Classes.ClassObject;
 import com.theStudyBuddy.Ignite.Classes.ClassSpinnerData;
 import com.theStudyBuddy.Ignite.Classes.MeetingObject;
@@ -18,23 +28,13 @@ import com.theStudyBuddy.Ignite.Settings.HolidayData;
 import com.theStudyBuddy.Ignite.Settings.HolidayObject;
 import com.theStudyBuddy.Ignite.Settings.SettingsData;
 
-import android.app.AlarmManager;
-import android.app.Application;
-import android.app.PendingIntent;
-import android.content.Intent;
-import android.database.Cursor;
-import android.os.AsyncTask;
-import android.util.Log;
-
 public class StudyBuddyApplication extends Application
 {
 
-  String TAG = "TAG";
 
   ScheduleData scheduleData;
   PlannerData plannerData;
   ClassSpinnerData spinnerData;
-  SettingsData settingsData;
   HolidayData holidayData;
 
   private ArrayList<EntryObject> allEntries;
@@ -47,6 +47,10 @@ public class StudyBuddyApplication extends Application
   private boolean plannerAssistant;
   private boolean morning;
   private boolean nightly;
+  
+  // time stamp format = hhmm
+  private int morningTimeStamp;
+  private int nightlyTimeStamp;
 
   private boolean sendMorningOnHolidays;
   private boolean sendNightlyOnHolidays;
@@ -55,25 +59,119 @@ public class StudyBuddyApplication extends Application
   private boolean Assignments;
   private boolean Events;
   private boolean Reminders;
+  
+  
+  /// --------------- PREFERENCES ------------------------------
+  private final String PREFERENCES = "ApplicationSharedPreferences";
+  
+  private final String NOTIFICATIONS_KEY = "NotificationsKey";
+  private final String ASSISTANT_KEY = "AssistantKey";
+  private final String MORNING_KEY = "MorningKey";
+  private final String NIGHTLY_KEY = "NightlyKey";
+  
+  private final String MORNINGTIME_KEY = "MorningTimeKey";
+  private final String NIGHTLYTIME_KEY = "NightlyTimeKey";
+  
+  private final String HOLIDAYMORNING_KEY = "HolidayMorningKey";
+  private final String HOLIDAYNIGHTLY_KEY = "HolidayNightlyKey";
+  
+  private final String ASSIGNMENTS_KEY = "AssignmentsKey";
+  private final String EVENTS_KEY = "EventsKey";
+  private final String REMINDERS_KEY = "RemindersKey";
+  
+  public boolean launchTutorial = false;
+  
+  private void loadPrefereneces(){
+    SharedPreferences appSettings = getSharedPreferences(PREFERENCES, MODE_PRIVATE);
+    
+    
+    if(!appSettings.contains(NOTIFICATIONS_KEY)){
+      createPreferences(appSettings);
+      loadSettingsIntoPrefs(appSettings);
+      launchTutorial = true;
+    }
+    
 
-  boolean finishedLoading;
+    notifications = appSettings.getBoolean(NOTIFICATIONS_KEY, false);
+    plannerAssistant = appSettings.getBoolean(ASSISTANT_KEY, false);
+    morning = appSettings.getBoolean(MORNING_KEY, false);
+    nightly = appSettings.getBoolean(NIGHTLY_KEY, false);
+    
+    morningTimeStamp = appSettings.getInt(MORNINGTIME_KEY, 600);
+    nightlyTimeStamp = appSettings.getInt(NIGHTLYTIME_KEY, 2000);
+    
+    sendMorningOnHolidays = appSettings.getBoolean(HOLIDAYMORNING_KEY, false);
+    sendNightlyOnHolidays = appSettings.getBoolean(HOLIDAYNIGHTLY_KEY, false);
+    
+    Assignments = appSettings.getBoolean(ASSIGNMENTS_KEY, false);
+    Events = appSettings.getBoolean(EVENTS_KEY, false);
+    Reminders = appSettings.getBoolean(REMINDERS_KEY, false);
+    
+  }
+  
+  public void loadSettingsIntoPrefs(SharedPreferences appSettings){
 
-  /*
-   * public boolean todayIsntAHoliday(){ int todayId = todayId(0); for(int i =0;
-   * i < Holidays.size(); i++){
-   * 
-   * if (checker < todayId){
-   * 
-   * }
-   * 
-   * else if(checker == todayId) return false; } return true; }
-   */
+    try{
+      SettingsData settingsData = new SettingsData(this);
+      SharedPreferences.Editor editor = appSettings.edit();
+      editor.putBoolean(NOTIFICATIONS_KEY, settingsData.alarmsOn());
+      editor.putBoolean(ASSISTANT_KEY, settingsData.planAssistCheck());
+      editor.putBoolean(MORNING_KEY, settingsData.MorningCheck());
+      editor.putBoolean(NIGHTLY_KEY, settingsData.NightlyCheck());
+      
+      editor.putBoolean(ASSIGNMENTS_KEY, settingsData.Assignments());
+      editor.putBoolean(EVENTS_KEY, settingsData.Events());
+      editor.putBoolean(REMINDERS_KEY, settingsData.Reminders());
+      
+      editor.putBoolean(HOLIDAYMORNING_KEY, settingsData.MorningOnHolidayCheck());
+      editor.putBoolean(HOLIDAYNIGHTLY_KEY, settingsData.NightlyOnHolidayCheck());
+      
+      editor.commit();
+      
+      settingsData.clearData();
+      
+      settingsData = null;
+
+    } catch(SQLException e){
+      // db doesnt exist
+      Log.d("TAG", "SQL Exception caught");
+    }
+    
+    
+  }
+  
+  private void createPreferences(SharedPreferences appSettings){
+
+    SharedPreferences.Editor editor = appSettings.edit();
+    editor.putBoolean(NOTIFICATIONS_KEY, true);
+    editor.putBoolean(ASSISTANT_KEY, true);
+    editor.putBoolean(MORNING_KEY, true);
+    editor.putBoolean(NIGHTLY_KEY, true);
+    
+    editor.putInt(MORNINGTIME_KEY, 600);
+    editor.putInt(NIGHTLYTIME_KEY, 2000);
+    
+    editor.putBoolean(HOLIDAYMORNING_KEY, false);
+    editor.putBoolean(HOLIDAYNIGHTLY_KEY, true);
+    
+    editor.putBoolean(ASSIGNMENTS_KEY, true);
+    editor.putBoolean(EVENTS_KEY, true);
+    editor.putBoolean(REMINDERS_KEY, true);
+    editor.commit();
+  }
+  
+  private void updatePreference(String preferenceKey, boolean value){
+    SharedPreferences appSettings = getSharedPreferences(PREFERENCES, MODE_PRIVATE);
+    SharedPreferences.Editor editor = appSettings.edit();
+    editor.putBoolean(preferenceKey, value);
+    editor.commit();
+  }
+/// ------------------------------------------------------------  
 
   @Override
   public void onCreate()
   {
     super.onCreate();
-    finishedLoading = false;
 
     spinnerData = new ClassSpinnerData(this);
     scheduleData = new ScheduleData(this);
@@ -117,25 +215,16 @@ public class StudyBuddyApplication extends Application
       }
     }
     classes.close();
+    
 
-    settingsData = new SettingsData(this);
-    Assignments = settingsData.Assignments();
-    Events = settingsData.Events();
-    Reminders = settingsData.Reminders();
-    notifications = settingsData.notificationsCheck();
-    plannerAssistant = settingsData.planAssistCheck();
-    morning = settingsData.MorningCheck();
-    nightly = settingsData.NightlyCheck();
+    loadPrefereneces();
 
-    sendNightlyOnHolidays = settingsData.NightlyOnHolidayCheck();
-    sendMorningOnHolidays = settingsData.MorningOnHolidayCheck();
 
     holidayData = new HolidayData(this);
     allHolidays = holidayData.getHolidayIds(todayId(0));
 
     new InitializeAlarms().execute();
 
-    finishedLoading = true;
   }
 
   public ArrayList<ClassObject> getAllClasses()
@@ -504,7 +593,7 @@ public class StudyBuddyApplication extends Application
 
     protected Object doInBackground(Object... params)
     {
-      settingsData.updateSetting("Notifications", 1);
+      updatePreference(NOTIFICATIONS_KEY, true);
       if (plannerAssistant)
         new AllPlannerAssistantOn(false).execute(false);
       if (morning)
@@ -521,7 +610,7 @@ public class StudyBuddyApplication extends Application
 
     protected Object doInBackground(Object... params)
     {
-      settingsData.updateSetting("Notifications", 0);
+      updatePreference(NOTIFICATIONS_KEY, false);
       if (plannerAssistant)
         new AllPlannerAssistantOff(false).execute(false);
       if (morning)
@@ -572,7 +661,7 @@ public class StudyBuddyApplication extends Application
     protected Object doInBackground(Object... params)
     {
       if (changeIt)
-        settingsData.updateSetting("Planner Assistant", 1);
+        updatePreference(ASSISTANT_KEY, true);
 
       for (int i = 0; i < allMeetings.size(); i++)
       {
@@ -601,7 +690,7 @@ public class StudyBuddyApplication extends Application
     protected Object doInBackground(Object... params)
     {
       if (changeIt)
-        settingsData.updateSetting("Planner Assistant", 0);
+        updatePreference(ASSISTANT_KEY, true);
 
       for (int i = 0; i < allMeetings.size(); i++)
       {
@@ -832,7 +921,7 @@ public class StudyBuddyApplication extends Application
       // notifications are all turned off)
       if (updateDB)
       {
-        settingsData.updateSetting("Morning Notifications", 1);
+        updatePreference(MORNING_KEY, true);
       }
 
       int MrnAlarmHr = 6;
@@ -880,7 +969,7 @@ public class StudyBuddyApplication extends Application
     protected Object doInBackground(Object... params)
     {
       if (changeIt)
-        settingsData.updateSetting("Morning Notifications", 0);
+        updatePreference(MORNING_KEY, false);
       MorningIntent = new Intent(getApplicationContext(),
           MorningBroadcastReceiver.class);
 
@@ -932,7 +1021,7 @@ public class StudyBuddyApplication extends Application
     protected Object doInBackground(Object... params)
     {
       if (changeIt)
-        settingsData.updateSetting("Nightly Notifications", 1);
+        updatePreference(NIGHTLY_KEY, true);
 
       // 8PM for now ( probably give users time option in future)
       int NgtAlarmHr = 12 + 8;
@@ -979,7 +1068,7 @@ public class StudyBuddyApplication extends Application
     protected Object doInBackground(Object... params)
     {
       if (changeIt)
-        settingsData.updateSetting("Nightly Notifications", 0);
+        updatePreference(NIGHTLY_KEY, false);
 
       NightIntent = new Intent(getBaseContext(), NightBroadcastReceiver.class);
       NightPendingIntent = PendingIntent.getBroadcast(getBaseContext(), 1992,
@@ -1149,19 +1238,19 @@ public class StudyBuddyApplication extends Application
     protected Object doInBackground(Object... params)
     {
       if (Assignments)
-        settingsData.updateSetting("Assignments", 1);
+        updatePreference(ASSIGNMENTS_KEY, true);
       else
-        settingsData.updateSetting("Assignments", 0);
+        updatePreference(ASSIGNMENTS_KEY, false);
 
       if (Events)
-        settingsData.updateSetting("Events", 1);
+        updatePreference(EVENTS_KEY, true);
       else
-        settingsData.updateSetting("Events", 0);
+        updatePreference(EVENTS_KEY, false);
 
       if (Reminders)
-        settingsData.updateSetting("Reminders", 1);
+        updatePreference(REMINDERS_KEY, true);
       else
-        settingsData.updateSetting("Reminders", 0);
+        updatePreference(REMINDERS_KEY, false);
       return null;
     }
 
@@ -1491,15 +1580,14 @@ public class StudyBuddyApplication extends Application
 
     protected Void doInBackground(Void... arg0)
     {
-      int isOnValue = (isOn == true ? 1 : 0);
 
       if (nightly)
       {
-        settingsData.updateSetting("SendNightlyOnHolidays", isOnValue);
+        updatePreference(HOLIDAYNIGHTLY_KEY, isOn);
       }
       else
       {
-        settingsData.updateSetting("SendMorningOnHolidays", isOnValue);
+        updatePreference(HOLIDAYMORNING_KEY, isOn);
       }
 
       return null;
@@ -1518,7 +1606,6 @@ public class StudyBuddyApplication extends Application
       for (int i = 0; i < allHolidays.size(); i++)
       {
         int holidayId = allHolidays.get(i).getDayId();
-        Log.d("TAG", "Holiday Id = " + holidayId);
         if (todayId == holidayId)
           return false;
         else if (todayId < holidayId)

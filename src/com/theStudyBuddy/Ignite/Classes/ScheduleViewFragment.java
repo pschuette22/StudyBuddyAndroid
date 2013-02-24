@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,12 +16,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.theStudyBuddy.Ignite.R;
-import com.theStudyBuddy.Ignite.StudyBuddyActivity;
 import com.theStudyBuddy.Ignite.StudyBuddyApplication;
-import com.theStudyBuddy.Ignite.Entries.AssignmentViewActivity;
-import com.theStudyBuddy.Ignite.Settings.SettingsViewActivity;
+import com.theStudyBuddy.Ignite.Settings.HolidayActivity;
 
-public class ScheduleViewActivity extends Fragment implements OnClickListener
+public class ScheduleViewFragment extends Fragment implements OnClickListener
 
 {
   View mView;
@@ -50,19 +47,8 @@ public class ScheduleViewActivity extends Fragment implements OnClickListener
     activity = getActivity();
     context = activity.getBaseContext();
     studyBuddy = (StudyBuddyApplication) activity.getApplication();
-    
-    StudyBuddyActivity.currentFragment = "Schedule";
-
 
     mView = inflater.inflate(R.layout.scheduleview, container, false);
-
-    scheduleToAssignments = (Button) mView
-        .findViewById(R.id.buttonScheduleView_ToAssignmentsView);
-    scheduleToAssignments.setOnClickListener(this);
-
-    scheduleToSettings = (Button) mView
-        .findViewById(R.id.buttonSchedule_ToSettings);
-    scheduleToSettings.setOnClickListener(this);
 
     scheduleEdit = (Button) mView
         .findViewById(R.id.buttonScheduleView_ToScheduleEdit);
@@ -208,19 +194,6 @@ public class ScheduleViewActivity extends Fragment implements OnClickListener
 
     switch (v.getId())
     {
-    case R.id.buttonScheduleView_ToAssignmentsView:
-      FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-      ft.setCustomAnimations(R.anim.out_to_left, R.anim.in_from_right);
-      Fragment newFrag = new AssignmentViewActivity();
-      ft.replace(R.id.fragmentContainerUnique, newFrag).commit();
-      break;
-
-    case R.id.buttonSchedule_ToSettings:
-      FragmentTransaction ft2 = getActivity().getSupportFragmentManager().beginTransaction();
-      ft2.setCustomAnimations(R.anim.in_from_left, R.anim.out_to_right);
-      Fragment newFrag2 = new SettingsViewActivity();
-      ft2.replace(R.id.fragmentContainerUnique, newFrag2).commit();
-      break;
 
     case R.id.buttonScheduleView_ToScheduleEdit:
       Intent toES = new Intent(context, EditScheduleActivity.class);
@@ -230,8 +203,8 @@ public class ScheduleViewActivity extends Fragment implements OnClickListener
       break;
 
     case R.id.buttonSchedule_DeleteClasses:
-      Intent toCD = new Intent(context, ClassDeleteActivity.class);
-      startActivityForResult(toCD, 500);
+      Intent toHA = new Intent(context, HolidayActivity.class);
+      startActivityForResult(toHA, 500);
       getActivity().overridePendingTransition(R.anim.in_from_bottom,
           R.anim.hold);
       break;

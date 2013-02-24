@@ -10,7 +10,6 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,6 @@ public class TopBarActivity extends Fragment
 
   ScheduleData scheduleData;
 
-  private static boolean show = true;
   Context context;
   Activity activity;
   View mView;
@@ -46,7 +44,6 @@ public class TopBarActivity extends Fragment
 
   public void ClassCountDown()
   {
-    Log.d("TAG", "Restarted count down");
     scheduleData = new ScheduleData(getActivity());
     final Calendar RightNow = Calendar.getInstance();
 

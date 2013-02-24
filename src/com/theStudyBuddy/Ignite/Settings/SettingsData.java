@@ -3,8 +3,6 @@ package com.theStudyBuddy.Ignite.Settings;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import com.theStudyBuddy.Ignite.StudyBuddyApplication;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -13,12 +11,16 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 import android.util.Log;
 
+import com.theStudyBuddy.Ignite.StudyBuddyApplication;
+
 public class SettingsData extends SQLiteOpenHelper
 {
+  ////// THIS CLASS IS DEPRICATED, I WAS REALLY STUPID EARLIER, ONLY KEPT FOR UPDATES
+  
   StudyBuddyApplication StudyBuddy;
 
   private static final String DATABASE_NAME = "settingsdb";
-  private static final int DATABASE_VERSION = 3;
+  private static final int DATABASE_VERSION = 4;
 
   public static final String SETTINGS_TABLE_NAME = "StudyBuddySettings";
   public static final String SETTINGS_ID = BaseColumns._ID;
@@ -36,31 +38,44 @@ public class SettingsData extends SQLiteOpenHelper
   @Override
   public void onCreate(SQLiteDatabase dbSettings)
   {
+    
+//    String sqlSetData = "CREATE TABLE " + SETTINGS_TABLE_NAME + " ("
+//        + SETTINGS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + SETTINGS_TYPE
+//        + " TEXT NOT NULL, " + SETTINGS_DESCRIPTION + " TEXT NOT NULL, "
+//        + SETTINGS_VALUE + " INTEGER" + ");";
+//    dbSettings.execSQL(sqlSetData);
+    
+    return; 
+    
 
-    String sqlSetData = "CREATE TABLE " + SETTINGS_TABLE_NAME + " ("
-        + SETTINGS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + SETTINGS_TYPE
-        + " TEXT NOT NULL, " + SETTINGS_DESCRIPTION + " TEXT NOT NULL, "
-        + SETTINGS_VALUE + " INTEGER" + ");";
-    dbSettings.execSQL(sqlSetData);
-    
-    createValues(dbSettings);
-    
-    InsertPlannerSettings2(dbSettings);
-    
-    InsertPlannerSettings3(dbSettings);
+//    
+//    createValues(dbSettings);
+//    
+//    InsertPlannerSettings2(dbSettings);
+//    
+//    InsertPlannerSettings3(dbSettings);
   }
 
   @Override
   public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
   {
-    if(oldVersion < 2){
-      InsertPlannerSettings2(db);
-    }
-    if(oldVersion < 3){
-      InsertPlannerSettings3(db);
-    }
+    tryToLoadIntoPrefs(oldVersion, db);
+    
+//    if(oldVersion < 2){
+//      InsertPlannerSettings2(db);
+//    }
+//    if(oldVersion < 3){
+//      InsertPlannerSettings3(db);
+//    }
     
   }
+  /// PREFS 
+  
+  public void tryToLoadIntoPrefs(int oldVersion, SQLiteDatabase db){
+    
+
+  }
+
   
   public void InsertPlannerSettings2(SQLiteDatabase db){
     
@@ -136,6 +151,12 @@ public class SettingsData extends SQLiteOpenHelper
   }
   // ===============================================================
   
+  public void clearData()
+  {
+    SQLiteDatabase data = this.getWritableDatabase();
+    data.delete(SETTINGS_TABLE_NAME, null, null);
+    data.close();
+  }
   
   public boolean notificationsCheck()
   {

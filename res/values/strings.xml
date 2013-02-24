@@ -7,7 +7,7 @@
     <string name="buttonUniversal_ToAssignments">Assignments</string>
     <string name="buttonAssignmentAdd_SaveQuit">Return To Assignments</string>
     <string name="textAssignments_Title">Main Menu</string>
-    <string name="textAssignments_Sort">Sort By...</string>
+    <string name="textAssignments_Sort">Sort By&#8230;</string>
     <string name="radioAssignments_SortClass">Class</string>
     <string name="radioAssignments_SortDue">Due</string>
     <string name="buttonAssignments_Add">Add Entry</string>
@@ -47,9 +47,6 @@
     <string name="scheduleEdit_NoClasses">There are currently no classes! Start Adding!</string>
     <string name="scheduleDatabase_Delete">Delete Class</string>
 
-    <color name="ScheduleListColor">#000</color>
-    <color name="ScheduleListTextColor">#FFF</color>
-
     <string name="menuAddClass">Add a Class</string>
     <string name="menu_delete">Delete Class</string>
     <string name="toastScheduleEdit_ClassNotSavedTitle">Class Not Saved!</string>
@@ -88,8 +85,6 @@
     <string name="notificationPlannerAssistant_Message">What was assigned?</string>
     <string name="buttonPlannerView_Close">Close</string>
     <string name="PlannerViewTitle_Assignments">Assignments</string>
-    <string name="dialogEditSchedule_ToLongTitle">Class Title too Long</string>
-    <string name="dialogEditSchedule_ToLongBody">All that matters is you know what it means. After a few weeks a long title will just be annoying(Suggested Example: CS 241)</string>
     <string name="textMorningReminder_Title">All Entries for the Day</string>
     <string name="textMorningReminder_Motivation">\"Let Today Be Great\"</string>
     <string name="textMorningReminder_Assignments">Assignments</string>
@@ -101,7 +96,6 @@
     <string name="textNightReminder_TomorrowHeader">Tomorrow</string>
     <string name="textNightReminder_DayAfter">Two Days From Now</string>
     <string name="textNightReminder_AndAfterHeader">Three Days From Now</string>
-    <string name="OnCreateBody">Hello and welcome to the College Study Buddy. This is a planner which will remind you to use it for select classes (by turning the Planner Assistant on) and help you stay on top of your assignments and due dates. My name is Pete and I am just another college student who has troubles keeping a planner. I created it because there are plenty of other things which I would rather think about and focus my energy on then what is due and coming up for classes. Just let this application do that! The College Study Buddy can only be used if a Schedule is built, so get started by clicking the button below!</string>
     <string name="OnCreateTitle">Welcome To The College Study Buddy!</string>
     <string name="noClasses_Line1">No Classes</string>
     <string name="textSettings_ClearTitle">Delete Items/ Clear Data</string>
@@ -118,7 +112,6 @@
     <string name="textSettings_NotificationTitle">Notification Settings</string>
     <string name="textDeleteClasses_Title">Delete Individual Classes</string>
     <string name="DeleteClasses_Delete">Delete Classes</string>
-    <string name="basicUse">Thank you for choosing the College Study Buddy, I hope that you will make good use of it. This is a basic overview of the operations and how to get the most out of this application considering it can be a very useful tool when used properly. HOW TO USE IT: you must start by building your schedule. Make sure all entries and put in correctly or you will get some very strange results, the time-selecter will be shown in AM/PM format but the text on the Add-A-Class page will be shown in 24-hour format so you can confirm that everything seems spaced out correctly. You can add and delete classes at any time. From there, you will go to the Schedule View page. This is where you can customize which classes you would like a notification reminding you to add entries to your planner after. This notification will be sent at the time you specified as when your class ends and selecting the notification from your notifications bar will bring you to the assignment entry view. Again, it is important to fill out all fields correctly to get the most out of this application. In this view, you will have the option to add Assignments, Events (such as tests or meetings) and reminders. Select the correct class from the selection menu, add your personal entry and then set the due date or date which corresponds to your entry. There is no limit to how many entries you can add, so put as few or as many as you would like. The Most important view is the Main Menu or Assignments View. This view has a list of buttons so you can view specific entries put in order of either class or due date. View them as often or not as you would like. Finally, the settings view. Here you can delete large chunks of the application and decide which notifications, if any, you would like turned on. For weeks off and vacations, it is very easy to simply disable notifications and the College Study Buddy wont bug you. Keep in mind, though, if either the Notifications Enabled or Planner Assistant Enabled check boxes are not selected, the check boxes in the schedule view will not be checkable. Well thank you again for trusting the College Study Buddy to help your journey through the most stressful time of your life and I hope  you find it useful. If there is anything you wish was added to it, feel free to post it on the applications Facebook page and I will do my best to make it happen.</string>
     <string name="buttonSettings_DeleteSelectClasses">Delete Select Classes</string>
     <string name="scheduleView_DeleteItems">Delete Classes</string>
     <string name="buttonScheduleView_DeleteSelect">Delete Classes</string>
@@ -134,8 +127,15 @@
     <string name="checkBoxEditSchedule_SameTime">Same Times</string>
     <string name="allSame">Consistent Times</string>
     <string name="Delete">Delete</string>
+    <string name="Add">Add</string>
+    <string name="AddThis">Add This</string>
+    <string name="AddClassText">Add a class&#8230;</string>
+    <string name="AddMeetingText">Add a meeting&#8230;</string>
+    <string name="AddDelete">Add/Delete</string>
     <string name="Cancel">Cancel</string>
     <string name="DeleteEntries">Delete Entries</string>
+    <string name="CurrentClasses">Current Classes</string>
+    <string name="ClassName">Class Name</string>
     <string name="HolidayPickerTitle">Holidays</string>
     <string name="app_slogan">the buddy every student needs \n it\'s pretty sweet</string>
 

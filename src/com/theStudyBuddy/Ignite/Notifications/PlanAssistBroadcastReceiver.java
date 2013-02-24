@@ -8,7 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.theStudyBuddy.Ignite.R;
-import com.theStudyBuddy.Ignite.Entries.AssignmentAddActivity;
+import com.theStudyBuddy.Ignite.Entries.EditPlannerActivity;
 import com.theStudyBuddy.Ignite.Settings.SettingsData;
 
 public class PlanAssistBroadcastReceiver extends BroadcastReceiver
@@ -36,7 +36,7 @@ public class PlanAssistBroadcastReceiver extends BroadcastReceiver
       Notification PANotification = new Notification(R.drawable.ic_pencil,
           NotificationTitle, 0);
       Intent PlannerAssistantIntent = new Intent(context,
-          AssignmentAddActivity.class);
+          EditPlannerActivity.class);
       PlannerAssistantIntent.putExtra("ClassName", className);
       PlannerAssistantIntent.putExtra(android.content.Intent.EXTRA_TEXT,
           className);

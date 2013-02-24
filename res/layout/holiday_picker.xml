@@ -155,6 +155,7 @@
                 android:orientation="horizontal" >
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem0"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -162,6 +163,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem1"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -169,6 +171,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem2"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -176,6 +179,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem3"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -183,6 +187,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem4"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -190,6 +195,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem5"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -197,6 +203,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem6"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -212,6 +219,7 @@
                 android:orientation="horizontal" >
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem7"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -219,6 +227,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem8"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -226,6 +235,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem9"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -233,6 +243,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem10"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -240,6 +251,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem11"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -247,6 +259,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem12"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -254,6 +267,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem13"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -269,6 +283,7 @@
                 android:orientation="horizontal" >
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem14"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -276,6 +291,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem15"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -283,6 +299,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem16"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -290,6 +307,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem17"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -297,6 +315,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem18"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -304,6 +323,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem19"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -311,6 +331,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem20"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -326,6 +347,7 @@
                 android:orientation="horizontal" >
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem21"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -333,6 +355,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem22"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -340,6 +363,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem23"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -347,6 +371,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem24"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -354,6 +379,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem25"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -361,6 +387,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem26"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -368,6 +395,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem27"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -383,6 +411,7 @@
                 android:orientation="horizontal" >
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem28"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -390,6 +419,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem29"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -397,6 +427,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem30"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -404,6 +435,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem31"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -411,6 +443,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem32"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -418,6 +451,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem33"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -425,6 +459,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem34"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -440,6 +475,7 @@
                 android:orientation="horizontal" >
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem35"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -447,6 +483,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem36"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -454,6 +491,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem37"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -461,6 +499,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem38"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -468,6 +507,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem39"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -475,6 +515,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem40"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
@@ -482,6 +523,7 @@
                     layout="@layout/calendar_item" />
 
                 <include
+                    android:layout_margin="2dp"
                     android:id="@+id/calItem41"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"

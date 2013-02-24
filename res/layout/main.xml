@@ -6,30 +6,34 @@
     android:background="#FFF"
     android:orientation="vertical" >
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_alignTop="@id/parent"
-        android:fillViewport="true" >
+        android:orientation="vertical" >
 
-        <LinearLayout
+        <fragment
+            android:name="com.theStudyBuddy.Ignite.TopBarActivity"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical" >
+            android:layout_height="wrap_content" />
 
-            <fragment
-                android:name="com.theStudyBuddy.Ignite.TopBarActivity"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
+        <android.support.v4.view.ViewPager
+            android:id="@+id/mainActivityViewPager"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
 
-            <LinearLayout
-                android:id="@+id/fragmentContainerUnique"
+            <android.support.v4.view.PagerTitleStrip
+                style="@style/viewpager_title_text"
+                android:layout_gravity="top"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:orientation="vertical" >
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+                android:layout_height="wrap_content"
+                android:paddingTop="3dp"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/titles"/>
+            
+        </android.support.v4.view.ViewPager>
+    </LinearLayout>
 
     <RelativeLayout
         xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"

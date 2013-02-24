@@ -26,12 +26,10 @@ public class HolidayActivity extends Activity implements OnClickListener
   public void onBackPressed()
   {
     super.onBackPressed();
-
     Intent intent = new Intent(getBaseContext(), StudyBuddyActivity.class);
-    intent.putExtra(android.content.Intent.EXTRA_TEXT, "Settings");
+    intent.putExtra("FragNumber", 1);
     startActivityForResult(intent, 500);
     overridePendingTransition(0, R.anim.out_to_bottom);
-
   }
 
   int year, month;
@@ -258,7 +256,7 @@ public class HolidayActivity extends Activity implements OnClickListener
         {
           if (holidays.get(0).getDayId() == calDayId)
           {
-            calNum.setBackgroundColor(Color.RED);
+            calNum.setBackgroundDrawable(getResources().getDrawable(R.drawable.selected_holiday_bgrnd));
             mView.setTag(holidays.get(0));
             holidays.remove(0);
 
@@ -282,7 +280,7 @@ public class HolidayActivity extends Activity implements OnClickListener
             }
             else
             {
-              calNum.setBackgroundColor(Color.RED);
+              calNum.setBackgroundDrawable(getResources().getDrawable(R.drawable.selected_holiday_bgrnd));
               mView.setTag(studyBuddy.addHoliday(calDayId));
             }
 

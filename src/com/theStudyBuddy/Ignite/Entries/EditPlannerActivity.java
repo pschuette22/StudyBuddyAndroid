@@ -1,4 +1,4 @@
-package com.theStudyBuddy.Ignite.Classes;
+package com.theStudyBuddy.Ignite.Entries;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,44 +17,47 @@ import android.widget.RelativeLayout;
 import com.theStudyBuddy.Ignite.R;
 import com.theStudyBuddy.Ignite.StudyBuddyActivity;
 
-public class EditScheduleActivity extends FragmentActivity 
+public class EditPlannerActivity extends FragmentActivity
+
 {
+
+  String className;
+  
+  AddEntryFragment addEntryFragment;
+  DeleteEntryFragment deleteEntryFragment;
   
   ViewPager mViewPager;
   EditPagerAdapter pagerAdapter;
   FragmentActivity activity;
+  
+  Button backButton;
   
   RelativeLayout tab1;
   LinearLayout tab1Bar;
   
   RelativeLayout tab2;
   LinearLayout tab2Bar;
-  Button backButton;
-
-  AddClassFragment addClassFragment;
-  ClassDeleteFragment deleteClassFragment;
   
   @Override
   public void onBackPressed()
   {
     super.onBackPressed();
-    Intent intent = new Intent(getBaseContext(), StudyBuddyActivity.class);
-    intent.putExtra("FragNumber", 1);
-    startActivityForResult(intent, 500);
+    Intent toPlanner = new Intent(getBaseContext(), StudyBuddyActivity.class);
+    startActivityForResult(toPlanner, 500);
     overridePendingTransition(0, R.anim.out_to_bottom);
   }
 
   @Override
-  public void onCreate(Bundle bundle)
+  public void onCreate(Bundle savedInstanceState)
   {
-
-    super.onCreate(bundle);
-
+    super.onCreate(savedInstanceState);
     setContentView(R.layout.tabholder);
     
-    addClassFragment = new AddClassFragment();
-    deleteClassFragment = new ClassDeleteFragment();
+    className = getIntent().getExtras().getString("ClassName");
+    addEntryFragment = new AddEntryFragment();
+    deleteEntryFragment = new DeleteEntryFragment();
     
+
     mViewPager = (ViewPager) findViewById(R.id.tabViewPager);
     pagerAdapter = new EditPagerAdapter(getSupportFragmentManager());
     mViewPager.setAdapter(pagerAdapter);
@@ -112,11 +115,9 @@ public class EditScheduleActivity extends FragmentActivity
       }
       
     });
-    
-
+      
   }
-  
-  
+
   public void pageChangedTabAction(int toPage){
     if(toPage == 0){
       tab1Bar.setVisibility(View.VISIBLE);
@@ -142,10 +143,10 @@ public class EditScheduleActivity extends FragmentActivity
     public Fragment getItem(int arg0)
     {
       if(arg0 == 0){
-        return addClassFragment;
+        return addEntryFragment;
       }
       else {
-        return deleteClassFragment;
+        return deleteEntryFragment;
       }
 
     }
@@ -156,5 +157,6 @@ public class EditScheduleActivity extends FragmentActivity
     }
 
   }
+
 
 }
